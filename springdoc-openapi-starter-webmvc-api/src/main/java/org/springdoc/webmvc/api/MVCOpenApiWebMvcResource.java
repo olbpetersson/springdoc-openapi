@@ -56,7 +56,7 @@ import static org.springdoc.core.utils.Constants.DEFAULT_API_DOCS_URL_YAML;
  * @author bnasslahsen
  */
 @RestController
-public class OpenApiWebMvcResource extends OpenApiResource {
+public class MVCOpenApiWebMvcResource extends MVCOpenApiResource {
 
 	/**
 	 * Instantiates a new Open api web mvc resource.
@@ -70,10 +70,10 @@ public class OpenApiWebMvcResource extends OpenApiResource {
 	 * @param springDocProviders the spring doc providers
 	 * @param springDocCustomizers the spring doc customizers
 	 */
-	public OpenApiWebMvcResource(String groupName, ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
-			GenericResponseService responseBuilder, OperationService operationParser,
-			SpringDocConfigProperties springDocConfigProperties, SpringDocProviders springDocProviders,
-			SpringDocCustomizers springDocCustomizers) {
+	public MVCOpenApiWebMvcResource(String groupName, ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
+									GenericResponseService responseBuilder, OperationService operationParser,
+									SpringDocConfigProperties springDocConfigProperties, SpringDocProviders springDocProviders,
+									SpringDocCustomizers springDocCustomizers) {
 		super(groupName, openAPIBuilderObjectFactory, requestBuilder, responseBuilder, operationParser, springDocConfigProperties, springDocProviders,springDocCustomizers);
 	}
 
@@ -89,8 +89,8 @@ public class OpenApiWebMvcResource extends OpenApiResource {
 	 * @param springDocCustomizers the spring doc customizers
 	 */
 	@Autowired
-	public OpenApiWebMvcResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder, GenericResponseService responseBuilder,
-			OperationService operationParser, SpringDocConfigProperties springDocConfigProperties, SpringDocProviders springDocProviders,  SpringDocCustomizers springDocCustomizers) {
+	public MVCOpenApiWebMvcResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder, GenericResponseService responseBuilder,
+									OperationService operationParser, SpringDocConfigProperties springDocConfigProperties, SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
 		super(openAPIBuilderObjectFactory, requestBuilder, responseBuilder, operationParser,  springDocConfigProperties, springDocProviders, springDocCustomizers);
 	}
 

@@ -69,7 +69,7 @@ import static org.springdoc.core.utils.Constants.DEFAULT_GROUP_NAME;
  *
  * @author bnasslahsen, Azige
  */
-public abstract class OpenApiResource extends AbstractOpenApiResource {
+public abstract class MVCOpenApiResource extends AbstractOpenApiResource {
 
 	/**
 	 * Instantiates a new Open api resource.
@@ -83,10 +83,10 @@ public abstract class OpenApiResource extends AbstractOpenApiResource {
 	 * @param springDocProviders the spring doc providers
 	 * @param springDocCustomizers the spring doc customizers
 	 */
-	public OpenApiResource(String groupName, ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
-			GenericResponseService responseBuilder, OperationService operationParser,
-			SpringDocConfigProperties springDocConfigProperties,
-			SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
+	public MVCOpenApiResource(String groupName, ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
+							  GenericResponseService responseBuilder, OperationService operationParser,
+							  SpringDocConfigProperties springDocConfigProperties,
+							  SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
 		super(groupName, openAPIBuilderObjectFactory, requestBuilder, responseBuilder, operationParser,  springDocConfigProperties, springDocProviders, springDocCustomizers);
 	}
 
@@ -101,10 +101,10 @@ public abstract class OpenApiResource extends AbstractOpenApiResource {
 	 * @param springDocProviders the spring doc providers
 	 * @param springDocCustomizers the spring doc customizers
 	 */
-	public OpenApiResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
-			GenericResponseService responseBuilder, OperationService operationParser,
-			SpringDocConfigProperties springDocConfigProperties,
-			SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
+	public MVCOpenApiResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
+							  GenericResponseService responseBuilder, OperationService operationParser,
+							  SpringDocConfigProperties springDocConfigProperties,
+							  SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
 		super(DEFAULT_GROUP_NAME, openAPIBuilderObjectFactory, requestBuilder, responseBuilder, operationParser, springDocConfigProperties, springDocProviders, springDocCustomizers);
 	}
 

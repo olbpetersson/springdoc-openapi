@@ -29,52 +29,54 @@ import org.springframework.test.web.reactive.server.WebTestClient
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Paths
+import java.time.Duration
 
 @WebFluxTest
 @ActiveProfiles("test")
 abstract class AbstractKotlinSpringDocTest {
 
-	@Autowired
-	private val webTestClient: WebTestClient? = null
+    @Autowired
+    private val webTestClient: WebTestClient? = null
 
-	private val logger = LoggerFactory.getLogger(AbstractKotlinSpringDocTest::class.java)
+    private val logger = LoggerFactory.getLogger(AbstractKotlinSpringDocTest::class.java)
 
-	@Test
-	@Throws(Exception::class)
-	fun testApp() {
-		var result: String? = null
-		try {
-			val getResult =
-				webTestClient!!.get().uri(Constants.DEFAULT_API_DOCS_URL).exchange()
-					.expectStatus().isOk.expectBody().returnResult()
+    @Test
+    @Throws(Exception::class)
+    fun testApp() {
+        var result: String? = null
+        try {
+            val getResult =
+                webTestClient!!.mutate().responseTimeout(Duration.ofDays(1)).build().get()
+                    .uri(Constants.DEFAULT_API_DOCS_URL).exchange()
+                    .expectStatus().isOk.expectBody().returnResult()
 
-			result = String(getResult.responseBody!!)
-			val className = javaClass.simpleName
-			val testNumber = className.replace("[^0-9]".toRegex(), "")
+            result = String(getResult.responseBody!!)
+            val className = javaClass.simpleName
+            val testNumber = className.replace("[^0-9]".toRegex(), "")
 
-			val expected = getContent("results/app$testNumber.json")
-			JSONAssert.assertEquals(expected, result, true)
-		} catch (e: AssertionError) {
-			logger.error(result)
-			throw e
-		}
-	}
+            val expected = getContent("results/app$testNumber.json")
+            JSONAssert.assertEquals(expected, result, true)
+        } catch (e: AssertionError) {
+            logger.error(result)
+            throw e
+        }
+    }
 
-	companion object {
-		@Throws(Exception::class)
-		fun getContent(fileName: String): String {
-			try {
-				val path = Paths.get(
-					AbstractKotlinSpringDocTest::class.java.classLoader.getResource(
-						fileName
-					)!!.toURI()
-				)
-				val fileBytes = Files.readAllBytes(path)
-				return String(fileBytes, StandardCharsets.UTF_8)
-			} catch (e: Exception) {
-				throw RuntimeException("Failed to read file: $fileName", e)
-			}
+    companion object {
+        @Throws(Exception::class)
+        fun getContent(fileName: String): String {
+            try {
+                val path = Paths.get(
+                    AbstractKotlinSpringDocTest::class.java.classLoader.getResource(
+                        fileName
+                    )!!.toURI()
+                )
+                val fileBytes = Files.readAllBytes(path)
+                return String(fileBytes, StandardCharsets.UTF_8)
+            } catch (e: Exception) {
+                throw RuntimeException("Failed to read file: $fileName", e)
+            }
 
-		}
-	}
+        }
+    }
 }

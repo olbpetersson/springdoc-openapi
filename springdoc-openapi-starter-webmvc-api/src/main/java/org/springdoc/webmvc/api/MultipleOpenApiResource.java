@@ -90,7 +90,7 @@ public abstract class MultipleOpenApiResource implements InitializingBean {
 	/**
 	 * The Grouped open api resources.
 	 */
-	private Map<String, OpenApiResource> groupedOpenApiResources;
+	private Map<String, MVCOpenApiResource> groupedOpenApiResources;
 
 	/**
 	 * The Spring doc customizers.
@@ -149,9 +149,9 @@ public abstract class MultipleOpenApiResource implements InitializingBean {
 	 * @param item the item
 	 * @return the open api resource
 	 */
-	private OpenApiResource buildWebMvcOpenApiResource(GroupedOpenApi item) {
+	private MVCOpenApiResource buildWebMvcOpenApiResource(GroupedOpenApi item) {
 		if (!springDocConfigProperties.isUseManagementPort() && !ACTUATOR_DEFAULT_GROUP.equals(item.getGroup()))
-			return new OpenApiWebMvcResource(item.getGroup(),
+			return new MVCOpenApiWebMvcResource(item.getGroup(),
 					defaultOpenAPIBuilder,
 					requestBuilder,
 					responseBuilder,
@@ -162,7 +162,7 @@ public abstract class MultipleOpenApiResource implements InitializingBean {
 
 			);
 		else
-			return new OpenApiActuatorResource(item.getGroup(),
+			return new MVCOpenApiActuatorResource(item.getGroup(),
 					defaultOpenAPIBuilder,
 					requestBuilder,
 					responseBuilder,
@@ -180,12 +180,12 @@ public abstract class MultipleOpenApiResource implements InitializingBean {
 	 * @param group the group
 	 * @return the open api resource or throw
 	 */
-	protected OpenApiResource getOpenApiResourceOrThrow(String group) {
-		OpenApiResource openApiResource = groupedOpenApiResources.get(group);
-		if (openApiResource == null) {
+	protected MVCOpenApiResource getOpenApiResourceOrThrow(String group) {
+		MVCOpenApiResource MVCOpenApiResource = groupedOpenApiResources.get(group);
+		if (MVCOpenApiResource == null) {
 			throw new OpenApiResourceNotFoundException("No OpenAPI resource found for group: " + group);
 		}
-		return openApiResource;
+		return MVCOpenApiResource;
 	}
 
 }

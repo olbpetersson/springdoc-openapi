@@ -54,7 +54,7 @@ import static org.springframework.util.AntPathMatcher.DEFAULT_PATH_SEPARATOR;
  * @author bnasslashen
  */
 @RestControllerEndpoint(id = DEFAULT_API_DOCS_ACTUATOR_URL)
-public class OpenApiActuatorResource extends OpenApiResource {
+public class MVCOpenApiActuatorResource extends MVCOpenApiResource {
 
 	/**
 	 * Instantiates a new Open api actuator resource.
@@ -67,11 +67,11 @@ public class OpenApiActuatorResource extends OpenApiResource {
 	 * @param springDocProviders the spring doc providers
 	 * @param springDocCustomizers the spring doc customizers
 	 */
-	public OpenApiActuatorResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory,
-			AbstractRequestService requestBuilder, GenericResponseService responseBuilder,
-			OperationService operationParser,
-			SpringDocConfigProperties springDocConfigProperties,
-			SpringDocProviders springDocProviders,  SpringDocCustomizers springDocCustomizers) {
+	public MVCOpenApiActuatorResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory,
+									  AbstractRequestService requestBuilder, GenericResponseService responseBuilder,
+									  OperationService operationParser,
+									  SpringDocConfigProperties springDocConfigProperties,
+									  SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
 		super(openAPIBuilderObjectFactory, requestBuilder, responseBuilder, operationParser, springDocConfigProperties, springDocProviders, springDocCustomizers);
 	}
 
@@ -87,10 +87,10 @@ public class OpenApiActuatorResource extends OpenApiResource {
 	 * @param springDocProviders the spring doc providers
 	 * @param springDocCustomizers the spring doc customizers
 	 */
-	public OpenApiActuatorResource(String groupName, ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory,
-			AbstractRequestService requestBuilder, GenericResponseService responseBuilder,
-			OperationService operationParser,SpringDocConfigProperties springDocConfigProperties,
-			SpringDocProviders springDocProviders,  SpringDocCustomizers springDocCustomizers) {
+	public MVCOpenApiActuatorResource(String groupName, ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory,
+									  AbstractRequestService requestBuilder, GenericResponseService responseBuilder,
+									  OperationService operationParser, SpringDocConfigProperties springDocConfigProperties,
+									  SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
 		super(groupName, openAPIBuilderObjectFactory, requestBuilder, responseBuilder, operationParser,
 				springDocConfigProperties, springDocProviders, springDocCustomizers);
 	}

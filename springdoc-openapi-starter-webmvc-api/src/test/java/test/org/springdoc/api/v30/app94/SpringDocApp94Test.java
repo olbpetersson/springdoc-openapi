@@ -39,7 +39,7 @@ import org.springdoc.core.service.AbstractRequestService;
 import org.springdoc.core.service.GenericResponseService;
 import org.springdoc.core.service.OpenAPIService;
 import org.springdoc.core.service.OperationService;
-import org.springdoc.webmvc.api.OpenApiWebMvcResource;
+import org.springdoc.webmvc.api.MVCOpenApiWebMvcResource;
 import test.org.springdoc.api.v30.AbstractSpringDocV30Test;
 import test.org.springdoc.api.v30.app91.Greeting;
 
@@ -91,9 +91,9 @@ public class SpringDocApp94Test extends AbstractSpringDocV30Test {
 		}
 
 		@Bean(name = "openApiResource")
-		public OpenApiWebMvcResource openApiResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder, GenericResponseService responseBuilder,
-				OperationService operationParser,SpringDocConfigProperties springDocConfigProperties, SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
-			return new OpenApiWebMvcResource(DEFAULT_GROUP_NAME, openAPIBuilderObjectFactory, requestBuilder, responseBuilder, operationParser,
+		public MVCOpenApiWebMvcResource openApiResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder, GenericResponseService responseBuilder,
+														OperationService operationParser, SpringDocConfigProperties springDocConfigProperties, SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
+			return new MVCOpenApiWebMvcResource(DEFAULT_GROUP_NAME, openAPIBuilderObjectFactory, requestBuilder, responseBuilder, operationParser,
 					springDocConfigProperties, springDocProviders,springDocCustomizers);
 		}
 

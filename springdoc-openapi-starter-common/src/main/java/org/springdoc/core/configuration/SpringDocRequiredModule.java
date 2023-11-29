@@ -44,7 +44,6 @@ public class SpringDocRequiredModule extends SimpleModule {
 	 * The type Respect schema required annotation introspector.
 	 */
 	private static class RespectSchemaRequiredAnnotationIntrospector extends SwaggerAnnotationIntrospector {
-
 		@Override
 		public Boolean hasRequiredMarker(AnnotatedMember annotatedMember) {
 			Schema schemaAnnotation = annotatedMember.getAnnotation(Schema.class);

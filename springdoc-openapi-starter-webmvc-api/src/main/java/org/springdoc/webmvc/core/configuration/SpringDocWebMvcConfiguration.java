@@ -43,8 +43,8 @@ import org.springdoc.core.service.OpenAPIService;
 import org.springdoc.core.service.OperationService;
 import org.springdoc.core.service.RequestBodyService;
 import org.springdoc.core.utils.PropertyResolverUtils;
-import org.springdoc.webmvc.api.OpenApiActuatorResource;
-import org.springdoc.webmvc.api.OpenApiWebMvcResource;
+import org.springdoc.webmvc.api.MVCOpenApiActuatorResource;
+import org.springdoc.webmvc.api.MVCOpenApiWebMvcResource;
 import org.springdoc.webmvc.core.providers.ActuatorWebMvcProvider;
 import org.springdoc.webmvc.core.providers.RouterFunctionWebMvcProvider;
 import org.springdoc.webmvc.core.providers.SpringWebMvcProvider;
@@ -107,11 +107,11 @@ public class SpringDocWebMvcConfiguration {
 	@ConditionalOnMissingBean
 	@ConditionalOnProperty(name = SPRINGDOC_USE_MANAGEMENT_PORT, havingValue = "false", matchIfMissing = true)
 	@Lazy(false)
-	OpenApiWebMvcResource openApiResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
-			GenericResponseService responseBuilder, OperationService operationParser,
-			SpringDocConfigProperties springDocConfigProperties,
-			SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
-		return new OpenApiWebMvcResource(openAPIBuilderObjectFactory, requestBuilder,
+    MVCOpenApiWebMvcResource openApiResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
+                                             GenericResponseService responseBuilder, OperationService operationParser,
+                                             SpringDocConfigProperties springDocConfigProperties,
+                                             SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
+		return new MVCOpenApiWebMvcResource(openAPIBuilderObjectFactory, requestBuilder,
 				responseBuilder, operationParser,  springDocConfigProperties, springDocProviders, springDocCustomizers);
 	}
 
@@ -236,11 +236,11 @@ public class SpringDocWebMvcConfiguration {
 		@ConditionalOnProperty(SPRINGDOC_USE_MANAGEMENT_PORT)
 		@ConditionalOnManagementPort(ManagementPortType.DIFFERENT)
 		@Lazy(false)
-		OpenApiActuatorResource openApiActuatorResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
-				GenericResponseService responseBuilder, OperationService operationParser,
-				SpringDocConfigProperties springDocConfigProperties,
-				SpringDocProviders springDocProviders,  SpringDocCustomizers springDocCustomizers) {
-			return new OpenApiActuatorResource(openAPIBuilderObjectFactory,
+        MVCOpenApiActuatorResource openApiActuatorResource(ObjectFactory<OpenAPIService> openAPIBuilderObjectFactory, AbstractRequestService requestBuilder,
+                                                           GenericResponseService responseBuilder, OperationService operationParser,
+                                                           SpringDocConfigProperties springDocConfigProperties,
+                                                           SpringDocProviders springDocProviders, SpringDocCustomizers springDocCustomizers) {
+			return new MVCOpenApiActuatorResource(openAPIBuilderObjectFactory,
 					requestBuilder, responseBuilder,
 					operationParser,
 					springDocConfigProperties, springDocProviders,  springDocCustomizers);

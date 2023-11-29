@@ -36,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @TestPropertySource(properties = "springdoc.api-docs.path=/api-docs")
-public class OpenApiResourceNoConfigurationTest extends AbstractSpringDocV30Test {
+public class MVCOpenApiResourceNoConfigurationTest extends AbstractSpringDocV30Test {
 
 	/**
 	 * givenNoConfiguration_whenGetApiJson_returnsDefaultEmptyDocs - should return

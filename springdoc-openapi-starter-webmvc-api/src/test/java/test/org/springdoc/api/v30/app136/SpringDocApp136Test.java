@@ -33,7 +33,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.RepeatedTest;
-import org.springdoc.webmvc.api.OpenApiWebMvcResource;
+import org.springdoc.webmvc.api.MVCOpenApiWebMvcResource;
 import test.org.springdoc.api.AbstractCommonTest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +56,7 @@ import static org.springdoc.core.utils.Constants.SPRINGDOC_CACHE_DISABLED;
 public class SpringDocApp136Test extends AbstractCommonTest {
 
 	@Autowired
-	OpenApiWebMvcResource resource;
+    MVCOpenApiWebMvcResource resource;
 
 	@Autowired
 	RequestMappingHandlerMapping requestMappingHandlerMapping;

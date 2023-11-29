@@ -111,7 +111,8 @@ public class OpenApiWebfluxResource extends OpenApiResource {
 	@Override
 	public Mono<byte[]> openapiJson(ServerHttpRequest serverHttpRequest, @Value(API_DOCS_URL) String apiDocsUrl, Locale locale)
 			throws JsonProcessingException {
-		return super.openapiJson(serverHttpRequest, apiDocsUrl, locale);
+		Mono<byte[]> result = super.openapiJson(serverHttpRequest, apiDocsUrl, locale);
+		return result;
 	}
 
 	/**

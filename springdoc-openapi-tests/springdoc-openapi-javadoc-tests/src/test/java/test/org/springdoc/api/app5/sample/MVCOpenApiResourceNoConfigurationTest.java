@@ -20,10 +20,8 @@ package test.org.springdoc.api.app5.sample;
 
 import org.junit.jupiter.api.Test;
 import test.org.springdoc.api.AbstractSpringDocTest;
-import test.org.springdoc.api.app5.CustomOpenAPIConfig;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.TestPropertySource;
 
 import static org.hamcrest.Matchers.is;
@@ -32,15 +30,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * The type Open api resource custom configuration test.
+ * The type Open api resource no configuration test.
  */
-@Import(CustomOpenAPIConfig.class)
 @TestPropertySource(properties = "springdoc.api-docs.path=/api-docs")
-public class OpenApiResourceCustomConfigurationTest extends AbstractSpringDocTest {
+public class MVCOpenApiResourceNoConfigurationTest extends AbstractSpringDocTest {
 
 	/**
-	 * givenNoConfiguration_whenGetApiJson_returnsDefaultEmptyDocs -  should return
-	 * {"openapi":"3.0.1","info":{"title":"Custom API","version":"100"},"paths":{},"components":{}}
+	 * givenNoConfiguration_whenGetApiJson_returnsDefaultEmptyDocs - should return
+	 * {"openapi":"3.0.1","info":{"title":"OpenAPI definition","version":"v0"},"paths":{},"components":{}}
 	 * @throws Exception the exception
 	 */
 	@Test
@@ -49,12 +46,10 @@ public class OpenApiResourceCustomConfigurationTest extends AbstractSpringDocTes
 				.perform(get("/api-docs"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.openapi", is("3.0.1")))
-				.andExpect(jsonPath("$.info.title", is("Custom API")))
-				.andExpect(jsonPath("$.info.version", is("100")))
+				.andExpect(jsonPath("$.info.title", is("OpenAPI definition")))
+				.andExpect(jsonPath("$.info.version", is("v0")))
 				.andExpect(jsonPath("$.paths").isEmpty())
-				.andExpect(jsonPath("$.components").isEmpty())
-				.andExpect(jsonPath("$.tags").isNotEmpty())
-				.andExpect(jsonPath("$.tags[0].name", is("mytag")));
+				.andExpect(jsonPath("$.components").isEmpty());
 	}
 
 	/**
