@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost",
+      "url": "",
       "description": "Generated server url"
     }
   ],
@@ -46,10 +46,7 @@
     "schemas": {
       "DemoRequest": {
         "required": [
-          "noRequiredNoNullableDefault",
-          "noRequiredNoNullableDefault2",
           "noRequiredNoNullableNoDefault",
-          "noRequiredNoNullableNoDefault2",
           "requiredNoNullableDefault",
           "requiredNoNullableDefault1",
           "requiredNoNullableNoDefault",
