@@ -16,7 +16,7 @@
  *
  */
 
-package test.org.springdoc.api.app11
+package test.org.springdoc.api
 
 import org.junit.jupiter.api.Test
 import org.skyscreamer.jsonassert.JSONAssert
