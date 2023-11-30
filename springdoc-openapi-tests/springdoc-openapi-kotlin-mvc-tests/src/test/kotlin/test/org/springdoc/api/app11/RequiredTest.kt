@@ -13,12 +13,8 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-@ExtendWith(
-	SpringExtension::class
-)
 @SpringBootTest
 @AutoConfigureMockMvc
-@ContextConfiguration(classes=[TestApp::class])
 @ActiveProfiles("test")
 class RequiredTest (@Autowired val mockMvc: MockMvc){
 
