@@ -33,6 +33,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.module.kotlin.KotlinModule;
 import com.querydsl.core.types.Predicate;
 import io.swagger.v3.core.converter.ModelConverter;
 import io.swagger.v3.oas.annotations.Hidden;
@@ -429,7 +430,6 @@ public class SpringDocConfiguration {
 			Optional<RepositoryRestResourceProvider> repositoryRestResourceProvider, Optional<RouterFunctionProvider> routerFunctionProvider,
 			Optional<SpringWebProvider> springWebProvider, Optional<WebConversionServiceProvider> webConversionServiceProvider,
 			ObjectMapperProvider objectMapperProvider) {
-		objectMapperProvider.jsonMapper().registerModule(new SpringDocRequiredModule());
 		return new SpringDocProviders(actuatorProvider, springCloudFunctionProvider, springSecurityOAuth2Provider, repositoryRestResourceProvider, routerFunctionProvider, springWebProvider, webConversionServiceProvider, objectMapperProvider);
 	}
 

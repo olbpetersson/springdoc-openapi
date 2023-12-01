@@ -31,6 +31,7 @@ class SpringDocJacksonKotlinModuleConfiguration {
 	 */
 	public SpringDocJacksonKotlinModuleConfiguration(ObjectMapperProvider objectMapperProvider) {
 		objectMapperProvider.jsonMapper()
-				.registerModule(new Builder().build());
+				.registerModule(new KotlinModule.Builder().build())
+				.registerModule(new SpringDocRequiredModule());
 	}
 }

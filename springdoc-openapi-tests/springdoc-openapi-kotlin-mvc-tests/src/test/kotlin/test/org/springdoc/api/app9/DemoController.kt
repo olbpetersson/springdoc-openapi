@@ -62,7 +62,7 @@ class DemoRequest (
 	@field:Schema
 	val noRequiredNullableNoDefault: String?,
 
-	@field:Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, defaultValue = "a default value")
+	@field:Schema(defaultValue = "a default value")
 	val noRequiredNoNullableDefault: String,
 
 	@field:Schema
