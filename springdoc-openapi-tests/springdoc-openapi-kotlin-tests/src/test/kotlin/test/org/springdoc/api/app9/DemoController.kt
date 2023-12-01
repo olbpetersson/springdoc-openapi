@@ -45,13 +45,13 @@ class DemoRequest (
 	val requiredNoNullableNoDefault1: String,
 
 	@field:Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, defaultValue = "a default value")
-	val flamingoNotReqDefaultNullable: String?,
+	val noRequiredNullableDefault2: String?,
 
 	@field:Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-	val flamingoNotReqNullable: String?,
+	val noRequiredNullableNoDefault2: String?,
 
 	@field:Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, defaultValue = "a default value")
-	val flamingoNotReqDefaultNotNullable: String,
+	val noRequiredNoNullableDefault2: String,
 
 	@field:Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED)
 	val noRequiredNoNullableNoDefault2: String,
